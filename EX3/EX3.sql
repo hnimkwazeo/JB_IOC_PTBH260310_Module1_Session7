@@ -23,7 +23,7 @@ create table post_like (
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 create index idx_post_lower_content_trgm_public 
 on post 
-using gin (LOWER(content) gin_trgm_ops)
+using gin (content gin_trgm_ops)
 where is_public = true;
 
 explain analyze select * from post
